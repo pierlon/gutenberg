@@ -99,6 +99,7 @@ class EditorProvider extends Component {
 				'template',
 				'templateLock',
 				'titlePlaceholder',
+				'showInserterHelpPanel',
 			] ),
 			__experimentalReusableBlocks: reusableBlocks,
 			__experimentalMediaUpload: hasUploadPermissions ? mediaUpload : undefined,

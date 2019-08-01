@@ -370,6 +370,7 @@ The default editor settings
  bodyPlaceholder                        string        Empty post placeholder
  titlePlaceholder                       string        Empty title placeholder
  codeEditingEnabled                     string        Whether or not the user can switch to the code editor
+ showInserterHelpPanel                  boolean       Whether or not the inserter help panel is shown
  \_\_experimentalCanUserUseUnfilteredHTML string        Whether the user should be able to use unfiltered HTML or the HTML should be filtered e.g., to remove elements considered insecure like iframes.
 
 <a name="SkipToSelectedBlock" href="#SkipToSelectedBlock">#</a> **SkipToSelectedBlock**

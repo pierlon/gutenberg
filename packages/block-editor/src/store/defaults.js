@@ -27,6 +27,7 @@ export const PREFERENCES_DEFAULTS = {
  *  bodyPlaceholder                        string        Empty post placeholder
  *  titlePlaceholder                       string        Empty title placeholder
  *  codeEditingEnabled                     string        Whether or not the user can switch to the code editor
+ *  showInserterHelpPanel                  boolean       Whether or not the inserter help panel is shown
  *  __experimentalCanUserUseUnfilteredHTML string        Whether the user should be able to use unfiltered HTML or the HTML should be filtered e.g., to remove elements considered insecure like iframes.
  */
 export const SETTINGS_DEFAULTS = {
@@ -138,6 +139,7 @@ export const SETTINGS_DEFAULTS = {
 
 	availableLegacyWidgets: {},
 	hasPermissionsToManageWidgets: false,
+	showInserterHelpPanel: true,
 	__experimentalCanUserUseUnfilteredHTML: false,
 };
 
