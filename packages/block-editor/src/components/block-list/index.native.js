@@ -227,20 +227,27 @@ export class BlockList extends Component {
 	}
 
 	renderItem( { item: clientId, index } ) {
-		const shouldShowAddBlockSeparator = this.state.blockTypePickerVisible && ( this.props.isBlockSelected( clientId ) || ( index === 0 && this.props.isPostTitleSelected ) );
-		const shouldPutAddBlockSeparatorAboveBlock = this.isReplaceable( this.props.selectedBlock ) || this.props.isPostTitleSelected;
+
+		const itemBlock = this.props.getBlock(clientId);
+		const isBlockReplaceable = this.isReplaceable(itemBlock);
+
+		const shouldShowAddBlockSeparator = this.state.blockTypePickerVisible && 
+		            ( this.props.isBlockSelected( clientId ) || ( index === 0 && this.props.isPostTitleSelected ) );
+		const shouldPutAddBlockSeparatorAboveBlock = isBlockReplaceable || this.props.isPostTitleSelected;
+		const insertingReplaceableBlock = shouldShowAddBlockSeparator && isBlockReplaceable
 
 		return (
 			<ReadableContentView reversed={ shouldPutAddBlockSeparatorAboveBlock }>
-				<BlockListBlock
-					key={ clientId }
-					showTitle={ false }
-					clientId={ clientId }
-					rootClientId={ this.props.rootClientId }
-					onCaretVerticalPositionChange={ this.onCaretVerticalPositionChange }
-					borderStyle={ this.blockHolderBorderStyle() }
-					focusedBorderColor={ styles.blockHolderFocused.borderColor }
-				/>
+				{ ! insertingReplaceableBlock && 
+					(<BlockListBlock
+						key={ clientId }
+						showTitle={ false }
+						clientId={ clientId }
+						rootClientId={ this.props.rootClientId }
+						onCaretVerticalPositionChange={ this.onCaretVerticalPositionChange }
+						borderStyle={ this.blockHolderBorderStyle() }
+						focusedBorderColor={ styles.blockHolderFocused.borderColor }
+					/>) }
 				{ shouldShowAddBlockSeparator && this.renderAddBlockSeparator() }
 			</ReadableContentView>
 		);
@@ -277,6 +284,7 @@ export class BlockList extends Component {
 export default compose( [
 	withSelect( ( select, { rootClientId } ) => {
 		const {
+			getBlock,
 			getBlockCount,
 			getBlockName,
 			getBlockIndex,
@@ -291,6 +299,7 @@ export default compose( [
 		return {
 			blockClientIds: getBlockOrder( rootClientId ),
 			blockCount: getBlockCount( rootClientId ),
+			getBlock,
 			getBlockName,
 			isBlockSelected,
 			selectedBlock: getSelectedBlock(),
