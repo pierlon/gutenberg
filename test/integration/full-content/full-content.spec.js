@@ -110,6 +110,7 @@ describe( 'full post content fixture', () => {
 				/* eslint-disable no-console */
 				console.warn.mockReset();
 				console.error.mockReset();
+				console.info.mockReset();
 				/* eslint-enable no-console */
 			}
 
