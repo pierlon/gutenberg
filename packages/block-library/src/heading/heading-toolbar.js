@@ -27,9 +27,9 @@ class HeadingToolbar extends Component {
 	}
 
 	render() {
-		const { isCollapsed, minLevel, maxLevel, selectedLevel, onChange } = this.props;
+		const { expanded, isCollapsed, minLevel, maxLevel, selectedLevel, onChange } = this.props;
 		return (
-			<Toolbar isCollapsed={ isCollapsed } controls={ range( minLevel, maxLevel ).map( ( index ) => this.createLevelControl( index, selectedLevel, onChange ) ) } />
+			<Toolbar isCollapsed={ ! expanded && isCollapsed } controls={ range( minLevel, maxLevel ).map( ( index ) => this.createLevelControl( index, selectedLevel, onChange ) ) } />
 		);
 	}
 }
