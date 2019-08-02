@@ -71,6 +71,7 @@ function DropdownMenu( {
 						labelPosition={ __unstableLabelPosition }
 						tooltip={ label }
 					>
+						{ ! icon && <span className="components-dropdown-menu__label" > { label } </span> }
 						{ ( ! icon || hasArrowIndicator ) && <span className="components-dropdown-menu__indicator" /> }
 					</IconButton>
 				);
